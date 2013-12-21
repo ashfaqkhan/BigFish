@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration PUBLIC "-//log4j/log4j Configuration//EN" "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+    
+<!-- File appender for Info. -->
+<appender name="FileAppenderInfo" class="org.apache.log4j.DailyRollingFileAppender">
+      <param name="File" value="${catalina.home}/BigFishLogs/BigFish_INFO.log"/>
+      <param name="Append" value="false"/>
+      <param name="Encoding" value="UTF-8"/>
+      <param name="ImmediateFlush" value="true"/>
+      <layout class="org.apache.log4j.PatternLayout">
+      			<param name="ConversionPattern" value="%d{ISO8601} %-5p - %C{3} -  %m%n"/>
+      </layout>
+      <filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="INFO" />
+			<param name="LevelMax" value="INFO" />
+		</filter>
+</appender>
+
+<!-- File appender for Debug. -->
+<appender name="FileAppenderDebug" class="org.apache.log4j.DailyRollingFileAppender">
+      <param name="File" value="${catalina.home}/BigFishLogs/BigFish_DEBUG.log"/>
+      <param name="Append" value="false"/>
+      <param name="ImmediateFlush" value="true"/>
+      <param name="Encoding" value="UTF-8"/>
+      <layout class="org.apache.log4j.PatternLayout">
+      			<param name="ConversionPattern" value="%d{ISO8601} %-5p - %C{3} -  %m%n"/>
+      </layout>
+      <filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="DEBUG" />
+			<param name="LevelMax" value="DEBUG" />
+		</filter>
+</appender>
+
+<!-- File appender for Warn. -->
+<appender name="FileAppenderWarn" class="org.apache.log4j.DailyRollingFileAppender">
+      <param name="File" value="${catalina.home}/BigFishLogs/BigFish_WARN.log"/>
+      <param name="Append" value="false"/>
+      <param name="ImmediateFlush" value="true"/>
+      <param name="Encoding" value="UTF-8"/>
+      <layout class="org.apache.log4j.PatternLayout">
+      			<param name="ConversionPattern" value="%d{ISO8601} %-5p - %C{3} -  %m%n"/>
+      </layout>
+      <filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="WARN" />
+			<param name="LevelMax" value="WARN" />
+		</filter>
+ </appender>
+
+ <!-- File appender for Error. -->
+<appender name="FileAppenderError" class="org.apache.log4j.DailyRollingFileAppender">
+      <param name="File" value="${catalina.home}/BigFishLogs/BigFish_ERROR.log"/>
+      <param name="Append" value="false"/>
+      <param name="ImmediateFlush" value="true"/>
+      <param name="Encoding" value="UTF-8"/>
+      <layout class="org.apache.log4j.PatternLayout">
+      			<param name="ConversionPattern" value="%d{ISO8601} %-5p - %C{3} -  %m%n"/>
+      </layout>
+      <filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="ERROR" />
+			<param name="LevelMax" value="ERROR" />
+		</filter>
+ </appender>
+
+<!-- File appender for Fatal. -->
+<appender name="FileAppenderFatal" class="org.apache.log4j.DailyRollingFileAppender">
+      <param name="File" value="${catalina.home}/BigFishLogs/BigFish_FATAL.log"/>
+      <param name="Append" value="false"/>
+      <param name="Encoding" value="UTF-8"/>
+      <param name="ImmediateFlush" value="true"/>
+      <layout class="org.apache.log4j.PatternLayout">
+      			<param name="ConversionPattern" value="%d{ISO8601} %-5p - %C{3} -  %m%n"/>
+      </layout>
+      <filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="FATAL" />
+			<param name="LevelMax" value="FATAL" />
+		</filter>
+ </appender>
+<!-- File appender for ALL. -->
+<appender name="FileAppenderAll" class="org.apache.log4j.DailyRollingFileAppender">
+      <param name="File" value="${catalina.home}/BigFishLogs/BigFish_All.log"/>
+      <param name="Append" value="true"/>
+      <param name="Encoding" value="UTF-8"/>
+      <layout class="org.apache.log4j.PatternLayout">
+      			<param name="ConversionPattern" value="%d{ISO8601} %-5p - %C{3} -  %m%n"/>
+      </layout>
+
+ </appender>
+	<appender name="EmailAppender"
+		class="org.apache.log4j.net.SMTPAppender">
+		<param name="To" value="ashfaq2kin@gmail.com" />
+		<param name="From" value="linkwebmaster@bigfish.tcs.com" />
+		<param name="Subject" value="Application Error" />
+		<param name="BufferSize" value="1024" />
+		<param name="SMTPHost" value="MAIL1" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ISO8601} %-5p - %C{3} -  %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="FATAL" />
+			<param name="LevelMax" value="FATAL" />
+		</filter>
+	</appender>
+	
+	<!-- CONSOLE PRINT  -->
+	<appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
+			<layout class="org.apache.log4j.PatternLayout">
+	                <param name="ConversionPattern" value="%d{ISO8601} %-5p - %C{3} -  %m%n"/>
+	        </layout>
+	</appender>
+
+	<logger name="org.hibernate">
+    	 <level value="info" />
+    </logger>
+    
+	 <!-- for all other loggers log only info and above log messages -->
+ <root>
+        <priority value="INFO"/>
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="FileAppenderInfo"/>
+        <appender-ref ref="FileAppenderDebug"/>
+        <appender-ref ref="FileAppenderWarn"/>
+        <appender-ref ref="FileAppenderError"/>
+        <appender-ref ref="FileAppenderFatal"/>
+        <appender-ref ref="FileAppenderAll"/>
+     	<appender-ref ref="EmailAppender"/>
+ </root>
+ 
+ 
+     <!-- specify the logging level for loggers from other libraries -->
+    <logger name="com.opensymphony">
+    	<level value="INFO" />
+    </logger>
+
+    <logger name="org.apache.struts2">
+    	 <level value="INFO" />
+    </logger>
+    
+    <logger name="org.springframework.security">
+    	 <level value="INFO" />
+    </logger>
+
+ 
+</log4j:configuration> 

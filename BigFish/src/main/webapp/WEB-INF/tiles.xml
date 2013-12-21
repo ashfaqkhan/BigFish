@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC  "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"   "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	
+	<definition name="baseLayout" template="/jsp/baselayout.jsp">
+		<put-attribute name="title"  value="BigFish Project Management" />
+		<put-attribute name="header" value="/jsp/header.jsp" />
+		<put-attribute name="menu"   value="/jsp/menu.jsp" />
+		<put-attribute name="body"   value="" />
+		<put-attribute name="rightpanel" value="/jsp/rightpanel.jsp" />   
+		<put-attribute name="footer" value="/jsp/footer.jsp" />
+	</definition>
+	
+	<definition name="userhome" extends="baseLayout"> 
+		<put-attribute name="title"  value="BigFish Project Management" />
+		<put-attribute name="body"   value="/jsp/user/userhome.jsp"/> 
+	</definition> 
+	
+	<definition name="welcome" extends="baseLayout">
+        <put-attribute name="title" value="Welcome to BigFish" />
+        <put-attribute name="body"  value="/jsp/welcome/welcome.jsp"/>
+        <put-attribute name="rightpanel" value="/jsp/welcome/wrightpanel.jsp" /> 
+    </definition>
+	
+	<!--0 no message display on login form -->
+	<definition name="login" extends="baseLayout">
+        <put-attribute name="title" value="BigFish Login" />
+        <put-attribute name="body"  value="/jsp/login/login.jsp?login_action=0"/>
+    </definition>
+    
+     <!-- 1 Print invalid login message -->
+    <definition name="loginError" extends="baseLayout">
+        <put-attribute name="title" value="BigFish Login" />
+        <put-attribute name="body"  value="/jsp/login/login.jsp?login_action=1"/>
+    </definition>
+    
+    <!-- 2 Print successful logout message -->
+    <definition name="logout" extends="baseLayout">
+        <put-attribute name="title" value="BigFish Login" />
+        <put-attribute name="body"  value="/jsp/login/login.jsp?login_action=2"/>
+    </definition>
+    
+    	
+</tiles-definitions>

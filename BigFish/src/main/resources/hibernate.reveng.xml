@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+  <table-filter match-catalog="bigfish" match-name="application"/>
+  <table-filter match-catalog="bigfish" match-name="attachment"/>
+  <table-filter match-catalog="bigfish" match-name="bigfishdatabases"/>
+  <table-filter match-catalog="bigfish" match-name="bigfishuser"/>
+  <table-filter match-catalog="bigfish" match-name="changerequest"/>
+  <table-filter match-catalog="bigfish" match-name="changestatus"/>
+  <table-filter match-catalog="bigfish" match-name="complexity"/>
+  <table-filter match-catalog="bigfish" match-name="defectcause"/>
+  <table-filter match-catalog="bigfish" match-name="defectentry"/>
+  <table-filter match-catalog="bigfish" match-name="defectseverity"/>
+  <table-filter match-catalog="bigfish" match-name="defecttype"/>
+  <table-filter match-catalog="bigfish" match-name="deployitemlist"/>
+  <table-filter match-catalog="bigfish" match-name="deployitemtype"/>
+  <table-filter match-catalog="bigfish" match-name="deployrequest"/>
+  <table-filter match-catalog="bigfish" match-name="deployrequestitemmap"/>
+  <table-filter match-catalog="bigfish" match-name="deploystage"/>
+  <table-filter match-catalog="bigfish" match-name="deploytype"/>
+  <table-filter match-catalog="bigfish" match-name="servicerequest"/>
+  <table-filter match-catalog="bigfish" match-name="servicetype"/>
+  <table-filter match-catalog="bigfish" match-name="taskstatus"/>
+  <table-filter match-catalog="bigfish" match-name="tasktype"/>
+  <table-filter match-catalog="bigfish" match-name="usercomments"/>
+  <table-filter match-catalog="bigfish" match-name="userdepartment"/>
+  <table-filter match-catalog="bigfish" match-name="userrole"/>
+</hibernate-reverse-engineering>

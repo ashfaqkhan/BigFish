@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd 
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
+
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName">
+			<value>com.mysql.jdbc.Driver</value>
+		</property>
+		<property name="url">
+			<value>jdbc:mysql://localhost:3306/bigfish</value>
+		</property>
+		<property name="username">
+			<value>bigfish</value>
+		</property>
+		<property name="password">
+			<value>bigfish</value>
+		</property>
+		<property name="initialSize">
+			<value>2</value>
+		</property>
+		<property name="maxActive">
+			<value>5</value>
+		</property>
+		<property name="maxIdle">
+			<value>2</value>
+		</property>
+	</bean>
+	
+	
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean"
+		destroy-method="destroy">
+		<property name="annotatedClasses">
+			<list>
+				<value>com.tcs.bigfish.hibernate.Application</value>
+				<value>com.tcs.bigfish.hibernate.Attachment</value>
+				<value>com.tcs.bigfish.hibernate.Bigfishdatabases</value>
+				<value>com.tcs.bigfish.hibernate.Bigfishuser</value>
+				<value>com.tcs.bigfish.hibernate.Changerequest</value>
+				<value>com.tcs.bigfish.hibernate.Changestatus</value>
+				<value>com.tcs.bigfish.hibernate.Complexity</value>
+				<value>com.tcs.bigfish.hibernate.Defectcause</value>
+				<value>com.tcs.bigfish.hibernate.Defectentry</value>
+				<value>com.tcs.bigfish.hibernate.Defectseverity</value>
+				<value>com.tcs.bigfish.hibernate.Defecttype</value>
+				<value>com.tcs.bigfish.hibernate.Deployitemlist</value>
+				<value>com.tcs.bigfish.hibernate.Deployitemtype</value>
+				<value>com.tcs.bigfish.hibernate.Deployrequest</value>
+				<value>com.tcs.bigfish.hibernate.Deployrequestitemmap</value>
+				<value>com.tcs.bigfish.hibernate.DeployrequestitemmapId</value>
+				<value>com.tcs.bigfish.hibernate.Deploystage</value>
+				<value>com.tcs.bigfish.hibernate.Deploytype</value>
+				<value>com.tcs.bigfish.hibernate.Servicerequest</value>
+				<value>com.tcs.bigfish.hibernate.Servicetype</value>
+				<value>com.tcs.bigfish.hibernate.Taskstatus</value>
+				<value>com.tcs.bigfish.hibernate.Tasktype</value>
+				<value>com.tcs.bigfish.hibernate.Usercomments</value>
+				<value>com.tcs.bigfish.hibernate.Userdepartment</value>
+				<value>com.tcs.bigfish.hibernate.Userrole</value>
+			</list>
+		</property>
+		<property name="dataSource" ref="dataSource" />
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.showSql">true</prop>
+				<prop key="hibernate.generateDdl">false</prop>
+			</props>
+		</property>
+	</bean>  
+	
+	<!-- TRANSACTION MANAGER 
+	<bean id="transactionManager"
+		class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+		<property name="dataSource" ref="dataSource" />
+	</bean>  
+	
+	ANNOTATION DRIVEN TRANSACTIONS
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	
+	<bean id="persistenceAnnotation"  class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+	 	
+	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceUnitName" value="local"/>
+		<property name="dataSource" ref="dataSource"/>
+		<property name="jpaVendorAdapter">
+		<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+			<property name="showSql" value="true"/>
+			<property name="generateDdl" value="false"/>
+			<property name="databasePlatform" value="org.hibernate.dialect.MySQLDialect"/>
+		</bean>
+		</property>
+	</bean>-->
+
+	
+</beans>
